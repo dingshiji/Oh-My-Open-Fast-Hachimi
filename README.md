@@ -14,7 +14,7 @@
 
 ## 先知道这些
 
-- 仓库只分发脚本、文档、配置模板和一个[测试音频](examples/demo.wav)；不含软件本体、声库、3D 模型、模型权重或历史歌曲。
+- 仓库只分发脚本、文档、配置模板和 [examples](examples/) 下少量示例文件（程序合成测试音频、示例源音频、用户改编的双人乐谱）；不含软件本体、声库、3D 模型、模型权重或历史歌曲。
 - 完整歌声需要 teio/manbo 日语 VCV 声库、HifiSampler 和 PC-NSF-HiFiGAN；当前合成代码需要 CUDA。日语音素近似中文会有口音，并非原生中文歌声模型。
 - 声库来源见[作者视频](https://www.bilibili.com/video/BV1E2J9zJE8c/)（用户提供，下载入口以简介/作者说明为准）。**整理后的 duo_stage.blend 无公开下载。** 原始模型仍需绑定和嘴型设置，因此下载本仓库不能直接复现完整视频。见[素材说明](assets/DOWNLOAD.txt)。
 - 软件可复用已有安装，也可放在被忽略的 [tools/local/](tools/local/README.txt)。首次使用先读 [tools/REQUIREMENTS.txt](tools/REQUIREMENTS.txt)。

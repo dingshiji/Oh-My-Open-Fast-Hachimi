@@ -95,5 +95,7 @@ Thumbs.db
 *.midi
 *.mscz
 *.mscx
-# Sole reproducible public audio fixture
+# Public example fixtures (procedurally generated audio + example source/score)
 !/examples/demo.wav
+!/examples/marry-has-a-little-lamb.wav
+!/examples/钟_哈基米双人带填词.mscz

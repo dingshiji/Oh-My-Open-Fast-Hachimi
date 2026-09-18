@@ -7,7 +7,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DESCRIPTIONS = {"models/readme.md", "models/download.txt", "tools/local/readme.txt"}
-DEMO = "examples/demo.wav"
+EXAMPLE_MEDIA = {
+    "examples/demo.wav",
+    "examples/marry-has-a-little-lamb.wav",
+    "examples/钟_哈基米双人带填词.mscz",
+}
 PRIVATE = ("assets/private/", "models/", "projects/", "output/", "work/", "cache/",
            "logs/", "tools/local/", ".codex/", ".claude/", ".agents/")
 BLOCKED = set("""
@@ -47,7 +51,7 @@ def path_issues(name):
         result.append("environment file")
     if leaf.startswith(("credentials", "secrets")) and leaf.endswith(".json"):
         result.append("credential file")
-    if Path(name).suffix in BLOCKED and name != DEMO:
+    if Path(name).suffix in BLOCKED and name not in EXAMPLE_MEDIA:
         result.append("software/media/model/credential binary")
     return result
 

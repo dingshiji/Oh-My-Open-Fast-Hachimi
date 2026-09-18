@@ -49,6 +49,19 @@ class ReleaseAuditTests(unittest.TestCase):
         self.write("examples/demo.wav", "fixture")
         self.assertEqual(self.check(), 0)
 
+    def test_listed_example_media_is_allowed(self):
+        self.write(".gitignore", "*.wav\n*.mscz\n")
+        self.write("examples/demo.wav", "fixture")
+        self.write("examples/marry-has-a-little-lamb.wav", "fixture")
+        self.write("examples/钟_哈基米双人带填词.mscz", "fixture")
+        self.git("add", "-f", ".")
+        self.assertEqual(self.check(), 0)
+
+    def test_unlisted_example_media_is_rejected(self):
+        self.write("examples/other.wav", "fixture")
+        self.git("add", "-f", "examples/other.wav")
+        self.assertEqual(self.check(), 1)
+
     def test_ignored_file_is_not_published_but_force_added_file_fails(self):
         self.write(".gitignore", "config/local.json\n")
         self.write("config/local.json", "{}")

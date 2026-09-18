@@ -31,7 +31,7 @@ Read README.md, docs/WORKFLOW.md, docs/ASSET_SCHEMA.md, and docs/LESSONS.md befo
 - Check audio finite/peak/duration, both channel timing, video full decode, sample frames, and source/user edits unchanged. Numerical checks are not listening tests.
 
 ## Repository hygiene
-- No secrets, personal paths, downloaded songs, rendered frames, outputs, or private assets in Git. The sole public WAV exception is the procedural examples/demo.wav fixture. Do not add ignored files with `git add -f`.
+- No secrets, personal paths, downloaded songs, rendered frames, outputs, or private assets in Git. Public example media is limited to the `EXAMPLE_MEDIA` allowlist in scripts/audit_release.py (the procedural demo.wav plus the listed example source WAV and example MSCZ). Do not add ignored files with `git add -f`; add an explicit .gitignore negation and audit allowlist entry instead.
 - assets/private and model weights are not distributed. Restore using assets/DOWNLOAD.txt and models/DOWNLOAD.txt; never assume they exist locally.
 - Update docs/STATE.md for reusable findings only; keep per-song state in ignored projects/<song>/STATE.md.
 - At completion give artifact links, what changed, verification, and material limitations. Do not publish/upload/create a GitHub repository unless requested.
