@@ -14,6 +14,9 @@ class VideoInputTests(unittest.TestCase):
  def test_overlapping_mouth_events_rejected(self):
   self.put([[dict(start=0,end=.7,vowel='a'),dict(start=.5,end=1,vowel='o')],[]])
   with self.assertRaises(ValueError):validate_job(self.job,self.root)
+ def test_abutting_boundary_float_roundoff_accepted(self):
+  self.put([[dict(start=0,end=.7,vowel='a'),dict(start=.7-1e-15,end=1,vowel='o')],[]])
+  validate_job(self.job,self.root)
  def test_odd_resolution_rejected(self):
   self.job['width']=1919
   with self.assertRaises(ValueError):validate_job(self.job,self.root)

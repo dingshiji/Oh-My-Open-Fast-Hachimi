@@ -50,7 +50,8 @@ def validate_job(job, base):
   end=0
   for e in events:
    a,b=e['start'],e['end']
-   if not (math.isfinite(a) and math.isfinite(b) and a>=end and b>a):
+   # Float serialization can shift an abutted boundary by ~1e-15; allow a sub-frame tolerance.
+   if not (math.isfinite(a) and math.isfinite(b) and a>=end-1e-6 and b>a):
     raise ValueError('Mouth events must be finite, ordered, and non-overlapping')
    if e['vowel'] not in ('a','i','u','e','o','closed'):raise ValueError('Unknown mouth vowel')
    end=b
