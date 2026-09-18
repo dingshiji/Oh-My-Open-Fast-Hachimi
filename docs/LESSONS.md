@@ -14,3 +14,4 @@
 - 背景滚动速度不可把 Blender 每秒 UV 位移照抄为 FFmpeg 每帧 scroll；先测一秒位移。新仓库无旧背景。
 - 动作节拍按真实 BPM/节拍图走，不能把所有动作片段强行同速循环。二头身动作重定向常有穿地/手臂问题。
 - 声库和权重已经放进本地目录不代表 Git 会带走；assets/private、models 必须另行备份/恢复。
+- 真实角色视频要自建 assets/private/characters/duo_stage.blend（默认 render_scene.py 只生成球体演示）：对象名/骨骼名/嘴型节点契约见 docs/SCENE_CONTRACT.md；曼波 .max 必须先经 3ds Max 等转成 FBX/GLB。

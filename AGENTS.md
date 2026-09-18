@@ -7,6 +7,7 @@ Read README.md, docs/WORKFLOW.md, docs/ASSET_SCHEMA.md, and docs/LESSONS.md befo
 - Use original Japanese VCV voicebanks and the neural vocoder. Voice conversion is deliberately outside this repository's scope.
 - Reuse external applications first; optional portable copies may live in ignored tools/local/. Read tools/REQUIREMENTS.txt and tools/local/README.txt; configure absolute paths in config/local.json. Never commit software installations.
 - No existing wallpaper/background is supplied. Default preview is solid white. Obtain a task-specific user image or create a new background only when requested. Never look for old project backgrounds outside this repository.
+- The prepared `assets/private/characters/duo_stage.blend` is NOT distributed, and the default `scripts/render_scene.py` only builds generic demo singers (spheres). To render the real teio/manbo characters you must build your own scene from the originals; the required objects, armature bone names and mouth-node contract are in [docs/SCENE_CONTRACT.md](docs/SCENE_CONTRACT.md). Do not submit a built blend that contains third-party models.
 
 ## Autonomy and checkpoints
 - Treat requests as instructions to do the work; check available files and tools first. Give concise progress reports during long tasks.

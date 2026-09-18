@@ -16,7 +16,7 @@
 
 - 仓库只分发脚本、文档、配置模板和 [examples](examples/) 下少量示例文件（程序合成测试音频、示例源音频、用户改编的双人乐谱）；不含软件本体、声库、3D 模型、模型权重或历史歌曲。
 - 完整歌声需要 teio/manbo 日语 VCV 声库、HifiSampler 和 PC-NSF-HiFiGAN；当前合成代码需要 CUDA。日语音素近似中文会有口音，并非原生中文歌声模型。
-- 声库来源见[作者视频](https://www.bilibili.com/video/BV1E2J9zJE8c/)（用户提供，下载入口以简介/作者说明为准）。视频默认由代码生成通用双人测试角色，不需要私有场景文件。原版 teio/manbo 外观仍需模型、绑定与渲染适配。见[素材说明](assets/DOWNLOAD.txt)。
+- 声库来源见[作者视频](https://www.bilibili.com/video/BV1E2J9zJE8c/)（用户提供，下载入口以简介/作者说明为准）。视频默认由代码生成通用双人测试角色，不需要私有场景文件。原版 teio/manbo 外观需要 AI **自行构建** `assets/private/characters/duo_stage.blend`（无公开下载），按[自建场景契约](docs/SCENE_CONTRACT.md)装配对象名、骨骼名与嘴型节点。见[素材说明](assets/DOWNLOAD.txt)。
 - 软件可复用已有安装，也可放在被忽略的 [tools/local/](tools/local/README.txt)。首次使用先读 [tools/REQUIREMENTS.txt](tools/REQUIREMENTS.txt)。
 
 ## 给 code agent 的入口

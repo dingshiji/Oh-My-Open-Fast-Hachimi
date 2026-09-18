@@ -23,7 +23,9 @@ has an accent; this is not a native Chinese singing model.
 Voicebank source: [Bilibili video](https://www.bilibili.com/video/BV1E2J9zJE8c/)
 (user-provided; follow the description/author instructions for downloads).
 Video rendering builds generic demo singers procedurally without private scene assets.
-The original teio/manbo appearance still requires separate models, rigging and renderer integration.
+The original teio/manbo appearance requires an agent to **build its own**
+`assets/private/characters/duo_stage.blend` (there is no public download), following the object,
+armature bone and mouth-node contract in [docs/SCENE_CONTRACT.md](docs/SCENE_CONTRACT.md).
 See [asset instructions](assets/DOWNLOAD.txt) and [model downloads](models/DOWNLOAD.txt).
 
 ## For coding agents

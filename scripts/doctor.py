@@ -11,6 +11,8 @@ def main():
   if not ok:failed.append(n)
  if a.scope=='video':
   if failed:raise SystemExit('Missing video tools: '+', '.join(failed))
+  scene=ROOT/'assets/private/characters/duo_stage.blend'
+  print('duo_stage.blend', 'OK' if scene.exists() else 'MISSING (real characters need a self-built scene; see docs/SCENE_CONTRACT.md)')
   print('Video OK: procedural demo scene; no private character assets required');return
  required=['assets/private/metadata/teio_oto.json','assets/private/metadata/manbo_oto.json','assets/private/voicebanks/teio','assets/private/voicebanks/manbo']
  for name in required:
@@ -20,5 +22,7 @@ def main():
   print('Python',name,'available' if importlib.util.find_spec(name) else 'not in this interpreter (CPU/GPU environments may be separate)')
  print('HifiSampler util:',(Path(config()['hifisampler'])/'util/nsf_hifigan.py').is_file())
  print('Vocoder model:',bool(list((ROOT/'models/pc_nsf_hifigan').rglob('model.ckpt'))))
+ scene=ROOT/'assets/private/characters/duo_stage.blend'
+ print('duo_stage.blend','OK' if scene.exists() else 'MISSING (procedural demo only; build your own for real characters, see docs/SCENE_CONTRACT.md)')
  if failed:raise SystemExit('Missing assets/tools: '+', '.join(failed))
 if __name__=='__main__':main()

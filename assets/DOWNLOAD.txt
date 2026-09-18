@@ -32,6 +32,12 @@ platforms, mouths, camera and lights at runtime. No private scene or character f
 默认测试视频无需角色素材。通用角色不是原版 teio/manbo；原版外观需要自行取得模型并适配渲染器。
 Downloading GLB/MAX alone does not add original characters to the procedural renderer.
 
+要渲染真实 teio/manbo，AI agent 必须自己构建 assets/private/characters/duo_stage.blend：
+把第 2、3 项的原始模型绑定到契约要求的对象名与骨骼名，并设置嘴型材质节点。
+这个文件没有公开下载，只能自行装配或从合法个人备份恢复。
+完整对象清单、骨骼名、嘴型节点契约和参考渲染器见 docs/SCENE_CONTRACT.md。
+Do not commit the built blend; it contains third-party models.
+
 取得素材后的目录 / Layout after obtaining assets:
 assets/
   DOWNLOAD.txt
@@ -52,6 +58,7 @@ assets/
       teio_oto.json
       manbo_oto.json
     characters/
+      duo_stage.blend               # built locally per docs/SCENE_CONTRACT.md; NOT distributed
       originals/
         tokai_teio_chibi.glb
         manbo_source/
