@@ -22,8 +22,8 @@ has an accent; this is not a native Chinese singing model.
 
 Voicebank source: [Bilibili video](https://www.bilibili.com/video/BV1E2J9zJE8c/)
 (user-provided; follow the description/author instructions for downloads).
-**There is no public download for the prepared duo_stage.blend scene.** Original character models require rigging and mouth UV setup.
-A fresh clone cannot reproduce the full video without restoring/rebuilding these assets.
+Video rendering builds generic demo singers procedurally without private scene assets.
+The original teio/manbo appearance still requires separate models, rigging and renderer integration.
 See [asset instructions](assets/DOWNLOAD.txt) and [model downloads](models/DOWNLOAD.txt).
 
 ## For coding agents
@@ -131,3 +131,13 @@ See [THIRD_PARTY.md](THIRD_PARTY.md) for sources. No redistribution rights to th
 assets are granted. A repository code license has not yet been selected; public access
 does not itself grant an open-source license. The offline cover editor is
 scripts/cover_editor.html; obtain its avatar input separately.
+
+## Asset-free video smoke test / 无私有素材的视频测试
+
+Requires Python, Blender and FFmpeg configured in config/local.json. Generic demo singers only.
+仅测试舞台、动作、嘴型和编码，不代表真实角色或歌声。
+
+```powershell
+python scripts/doctor.py --scope video
+python scripts/video.py render examples/video.procedural.json output/video-smoke/preview.mp4
+```

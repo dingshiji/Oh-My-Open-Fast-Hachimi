@@ -21,3 +21,5 @@ mouth_events 是两个数组，字段 start/end/vowel（a i u e o closed），�
 ## video job
 duration、fps、width、height、bpm、lead、frames、audio、mouth_events、subtitles（可选）、background（可选）、color（无背景时）、encoder、fade_out。
 原曲去人声伴奏不自动从 13 分钟原片中挑片；由用户选段和 mix 配置负责。帧目录应为新版本独有，避免覆盖。
+
+默认视频角色由程序生成，无外部场景输入。mouth_events 仍为两个声部，允许空数组；事件必须按起点排序、不重叠。duration/fps/bpm 为正数，画面宽高为偶数整数。

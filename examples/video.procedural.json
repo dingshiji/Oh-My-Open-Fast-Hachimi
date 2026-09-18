@@ -1,0 +1,14 @@
+{
+  "duration": 4,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "bpm": 120,
+  "frames": "../output/video-smoke/frames",
+  "audio": "demo.wav",
+  "mouth_events": "mouths.procedural.json",
+  "color": "white",
+  "encoder": "libx264",
+  "samples": 8,
+  "fade_out": 0.4
+}

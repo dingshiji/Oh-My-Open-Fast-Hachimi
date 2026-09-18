@@ -33,9 +33,33 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
  for l in lines:
   assert l['end']>l['start']>=0;txt=l['text'].replace('\n',r'\N').replace('{','').replace('}','');rows.append(f"Dialogue: 0,{stamp(l['start'])},{stamp(l['end'])},Default,,0,0,0,,{txt}")
  Path(a.output).write_text(header+'\n'.join(rows),encoding='utf-8-sig')
+def validate_job(job, base):
+ for name, default in [('duration',0),('fps',30),('width',1920),('height',1080),('bpm',100)]:
+  value=job.get(name,default)
+  if not isinstance(value,(int,float)) or not math.isfinite(value) or value<=0:
+   raise ValueError(f'{name} must be finite and positive')
+ for name in ['width','height']:
+  value=job.get(name,1920 if name=='width' else 1080)
+  if int(value)!=value or value%2:raise ValueError(f'{name} must be an even integer')
+ for name in ['audio','mouth_events','background','subtitles']:
+  if name in ['audio','mouth_events'] or job.get(name):
+   if not (base/job[name]).is_file():raise FileNotFoundError(base/job[name])
+ parts=read(base/job['mouth_events'])
+ if len(parts)!=2:raise ValueError('mouth_events must contain two parts')
+ for events in parts:
+  end=0
+  for e in events:
+   a,b=e['start'],e['end']
+   if not (math.isfinite(a) and math.isfinite(b) and a>=end and b>a):
+    raise ValueError('Mouth events must be finite, ordered, and non-overlapping')
+   if e['vowel'] not in ('a','i','u','e','o','closed'):raise ValueError('Unknown mouth vowel')
+   end=b
+
 def render(a):
  spec=Path(a.spec).resolve();job=read(spec);base=spec.parent
- run([tool('blender'),'-b','-t','4','--python',ROOT/'scripts/render_scene.py','--',spec])
+ validate_job(job, base)
+ Path(a.output).resolve().parent.mkdir(parents=True,exist_ok=True)
+ run([tool('blender'),'-b','--python-exit-code','1','-t','4','--python',ROOT/'scripts/render_scene.py','--',spec])
  frames=base/job['frames'];audio=base/job['audio'];dest=Path(a.output).resolve();w=job.get('width',1920);h=job.get('height',1080);fps=job.get('fps',30)
  # Solid color is generated at runtime; no inherited wallpaper or background asset.
  cmd=[tool('ffmpeg'),'-v','warning','-y','-framerate',fps,'-i',frames/'%06d.png']

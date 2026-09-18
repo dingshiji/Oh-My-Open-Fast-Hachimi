@@ -8,10 +8,9 @@
 - [第三方来源与边界](../THIRD_PARTY.md)
 
 取得原始声库后运行 python scripts/index_voicebanks.py，再运行 python scripts/doctor.py。
-缺少 teio/manbo 声库或已整理场景时无法完整复现歌声/视频；不能用其他素材悄悄替换并宣称相同效果。
+缺少 teio/manbo 声库时无法复现歌声；视频可用代码生成的通用测试角色运行，但不等于原角色外观。
 
 A clone does not include voicebanks, characters or weights. Follow the linked download
 instructions. The voicebank source video is listed in assets/DOWNLOAD.txt; its attachments were not verified.
-There is no public prepared-scene download.
-Raw character downloads require additional rigging and mouth UV setup. The included
-procedural audio fixture works without those private assets.
+The default renderer creates generic demo singers without private scene files.
+Raw character downloads require additional rigging and mouth UV setup. Both procedural audio and video examples work without those private assets.

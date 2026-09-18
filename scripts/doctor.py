@@ -2,13 +2,17 @@ import sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from common import *
-import importlib.util
+import importlib.util,argparse
 def main():
+ p=argparse.ArgumentParser();p.add_argument('--scope',choices=['all','video'],default='all');a=p.parse_args()
  failed=[]
- for n in ['ffmpeg','ffprobe','blender','musescore']:
+ for n in (['ffmpeg','ffprobe','blender'] if a.scope=='video' else ['ffmpeg','ffprobe','blender','musescore']):
   p=tool(n);ok=Path(p).is_file() or shutil.which(p) is not None;print(n,'OK' if ok else 'MISSING',p)
   if not ok:failed.append(n)
- required=['assets/private/characters/duo_stage.blend','assets/private/metadata/teio_oto.json','assets/private/metadata/manbo_oto.json','assets/private/voicebanks/teio','assets/private/voicebanks/manbo']
+ if a.scope=='video':
+  if failed:raise SystemExit('Missing video tools: '+', '.join(failed))
+  print('Video OK: procedural demo scene; no private character assets required');return
+ required=['assets/private/metadata/teio_oto.json','assets/private/metadata/manbo_oto.json','assets/private/voicebanks/teio','assets/private/voicebanks/manbo']
  for name in required:
   ok=(ROOT/name).exists();print(name,'OK' if ok else 'MISSING')
   if not ok:failed.append(name)

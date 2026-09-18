@@ -16,7 +16,7 @@
 
 - 仓库只分发脚本、文档、配置模板和 [examples](examples/) 下少量示例文件（程序合成测试音频、示例源音频、用户改编的双人乐谱）；不含软件本体、声库、3D 模型、模型权重或历史歌曲。
 - 完整歌声需要 teio/manbo 日语 VCV 声库、HifiSampler 和 PC-NSF-HiFiGAN；当前合成代码需要 CUDA。日语音素近似中文会有口音，并非原生中文歌声模型。
-- 声库来源见[作者视频](https://www.bilibili.com/video/BV1E2J9zJE8c/)（用户提供，下载入口以简介/作者说明为准）。**整理后的 duo_stage.blend 无公开下载。** 原始模型仍需绑定和嘴型设置，因此下载本仓库不能直接复现完整视频。见[素材说明](assets/DOWNLOAD.txt)。
+- 声库来源见[作者视频](https://www.bilibili.com/video/BV1E2J9zJE8c/)（用户提供，下载入口以简介/作者说明为准）。视频默认由代码生成通用双人测试角色，不需要私有场景文件。原版 teio/manbo 外观仍需模型、绑定与渲染适配。见[素材说明](assets/DOWNLOAD.txt)。
 - 软件可复用已有安装，也可放在被忽略的 [tools/local/](tools/local/README.txt)。首次使用先读 [tools/REQUIREMENTS.txt](tools/REQUIREMENTS.txt)。
 
 ## 给 code agent 的入口
@@ -101,3 +101,13 @@ A 默认 teio 主旋律，B 默认 manbo 对答。音符 lyric 使用可发音�
 发布前运行 python scripts/audit_release.py，再核对 git status 与暂存区。检查包含候选文件、暂存内容和可达 Git 历史；规则扫描无法保证发现所有秘密。**不要把整个工作目录打包上传**，其中可能还有被忽略的个人项目。不要 git add -f 私有素材。
 
 第三方来源见 [THIRD_PARTY.md](THIRD_PARTY.md)。仓库不授予第三方素材的再分发权；目前未选择仓库代码许可证，公开可读不等于获得开源许可。离线封面工具见 scripts/cover_editor.html，头像需自行取得。
+
+## Asset-free video smoke test / 无私有素材的视频测试
+
+Requires Python, Blender and FFmpeg configured in config/local.json. Generic demo singers only.
+仅测试舞台、动作、嘴型和编码，不代表真实角色或歌声。
+
+```powershell
+python scripts/doctor.py --scope video
+python scripts/video.py render examples/video.procedural.json output/video-smoke/preview.mp4
+```

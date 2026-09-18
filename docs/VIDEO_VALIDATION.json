@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-18",
+  "private_assets_present": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "frames": 120,
+  "duration": 4,
+  "full_decode": "PASS",
+  "scene": "procedural generic demo singers",
+  "audio": "procedural demo fixture; not synthesized singing"
+}

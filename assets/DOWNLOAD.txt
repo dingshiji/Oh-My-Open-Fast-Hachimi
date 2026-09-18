@@ -27,14 +27,10 @@ Source page is reachable; check account requirements, download terms and permiss
 MAX 格式可能需要作者提供兼容导出或另行转换；不能直接当作 .blend 打开。
 A MAX file needs a compatible export/conversion before Blender use.
 
-4. duo_stage.blend is a locally prepared scene, not an upstream downloadable model.
-仅下载原始 GLB/MAX 不足以复现视频。需自行绑定、打包贴图、设置固定正面相机，
-并按 scripts/render_scene.py 的对象名和 UV 节点接口整理，或从合法个人备份恢复。
-Expected objects: teio dance rig, manbo dance rig, teio_Object_172, manbo_mouth.
-Mouth materials need Mouth tile offset nodes and the expected UV scale/stretch
-chain. See scripts/render_scene.py for the exact scene contract.
-There is no public download for this prepared scene; a fresh clone cannot render
-the full video without rebuilding/restoring it.
+4. Video preview is procedural: scripts/render_scene.py creates generic demo singers,
+platforms, mouths, camera and lights at runtime. No private scene or character file is required.
+默认测试视频无需角色素材。通用角色不是原版 teio/manbo；原版外观需要自行取得模型并适配渲染器。
+Downloading GLB/MAX alone does not add original characters to the procedural renderer.
 
 取得素材后的目录 / Layout after obtaining assets:
 assets/
@@ -56,7 +52,6 @@ assets/
       teio_oto.json
       manbo_oto.json
     characters/
-      duo_stage.blend               # prepared scene, packed textures
       originals/
         tokai_teio_chibi.glb
         manbo_source/

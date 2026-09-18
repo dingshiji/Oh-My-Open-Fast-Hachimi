@@ -25,7 +25,7 @@ Read README.md, docs/WORKFLOW.md, docs/ASSET_SCHEMA.md, and docs/LESSONS.md befo
 ## Timeline and video
 - Canonical note times are seconds excluding the configurable synthesis lead (default .13 s). Mouth/subtitle/mix times are final output seconds. Apply source trims and lead once, explicitly.
 - Sustain words across barlines; split quick captions at meaningful phrase boundaries, not arbitrary measure boundaries. Do not prepend singer names unless requested.
-- Default 1920x1080/30fps. Use the supplied planar character scene, existing mouth UV controls, and grounded feet. Do not move the mouth mesh away from the face.
+- Default 1920x1080/30fps. Use the procedural planar demo scene with grounded feet and geometric mouth controls. These generic demo singers are not the original teio/manbo models. Do not imply the private character appearance is bundled.
 - Optional video-sample intros must be separated to vocals when the user excludes their background music.
 - Match dance beat and interpolate body movement; don't render every frame by repeating a tiny pose cache without acknowledging motion limitations.
 - Check audio finite/peak/duration, both channel timing, video full decode, sample frames, and source/user edits unchanged. Numerical checks are not listening tests.
