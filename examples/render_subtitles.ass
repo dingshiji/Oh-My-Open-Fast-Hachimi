@@ -1,0 +1,12 @@
+﻿[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Microsoft YaHei,46,&H00FFFFFF,&H00FFFFFF,&H00352A3E,&H80000000,-1,0,0,0,100,100,0,0,1,3,1,2,40,40,55,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.23,0:00:01.78,Default,,0,0,0,,哈基米
+Dialogue: 0,0:00:01.83,0:00:02.78,Default,,0,0,0,,曼波

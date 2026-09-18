@@ -1,0 +1,8 @@
+{
+  "duration":4.0,"fps":30,"width":1920,"height":1080,"bpm":120,"lead":0.13,
+  "frames":"../output/demo01/frames",
+  "audio":"../output/demo01/mix.wav",
+  "mouth_events":"../output/demo01/mouths.json",
+  "subtitles":"../output/demo01/captions.ass",
+  "color":"white","encoder":"libx264","samples":16,"fade_out":0.4
+}

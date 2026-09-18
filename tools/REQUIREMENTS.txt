@@ -1,0 +1,31 @@
+软件不随仓库分发。先复用现有安装，或按 tools/local/README.txt 放入被忽略的 tools/local/。
+Software is not bundled. Reuse installations or ignored tools/local/. Configure absolute paths in config/local.json.
+
+必需（完整制作）：
+1. Python：基础工具可用 Python 3.10–3.13；GPU 音频建议独立 Python 3.10/3.11 环境。
+   本次实际复用 GPU 环境是 Python 3.9 + PyTorch 2.0.0/cu118（RTX 4070）。不要直接覆盖已有环境。
+2. FFmpeg + ffprobe：音频提取、响度、混音、字幕和视频编码；需要 libass；NVENC 可选。
+   https://ffmpeg.org/
+3. Blender 4.5 LTS：双人模型、嘴型、渲染。已验证 4.5.0。
+   https://www.blender.org/download/lts/
+4. MuseScore Studio 4：编辑双谱表、MusicXML/MIDI/MSCZ 导出。已验证 4.7.5。
+   https://musescore.org/
+5. PyTorch + torchaudio（匹配版本/CUDA）、Demucs htdemucs_6s：本地分轨。
+   https://github.com/facebookresearch/demucs
+6. HifiSampler 的 Python 声码器实现（包含 util/nsf_hifigan.py 和 util/wav2mel.py）。
+   https://github.com/openhachimi/hifisampler
+   config/local.json 的 hifisampler 指向包含 util/ 的目录，非可执行文件。
+7. PC-NSF-HiFiGAN 44.1k/512/128bin 2025.02 权重、config.json 及 NOTICE，位于 models/pc_nsf_hifigan。
+   https://github.com/openvpi/vocoders/releases/tag/pc-nsf-hifigan-44.1k-hop512-128bin-2025.02
+
+按任务可选：
+- OpenUtau：检查/手工调教日语 VCV，项目默认脚本直接生成 WAV，不声称通过 OpenUtau GUI 验证。
+- Muscriptor：https://muscriptor.kyutai.org。只有用户允许上传该任务音频后才使用。
+- Basic Pitch / RMVPE / librosa.pyin：转谱或音高交叉检查；不能保证混合伴奏的主旋律正确。
+- RapidOCR 或可查看截图的多模态模型：读取用户视频字幕。低清截图需人工检查。
+- Git：发布前检查忽略规则、文件大小和素材授权。无须 Git LFS，默认不提交私有大素材。
+
+依赖见 requirements*.txt。先安装与显卡匹配的 torch/torchaudio，再安装其余包。
+以上是本项目已知来源与经验版本，不保证上游目前最新；升级后先运行短例。
+
+English: Python runs the scripts; FFmpeg/ffprobe handles media; Blender renders; MuseScore edits/exports scores; matching PyTorch/torchaudio and Demucs separate stems; HifiSampler Python util and PC-NSF-HiFiGAN synthesize singing. Current singing code requires CUDA. Versions above are historical tests, not latest-version claims. Optional tools include OpenUtau, transcription and OCR. Never upload audio without task-specific consent.

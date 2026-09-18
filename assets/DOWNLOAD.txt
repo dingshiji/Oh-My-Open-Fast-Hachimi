@@ -1,0 +1,74 @@
+音源与角色素材 / Voicebanks and character assets
+
+本仓库不分发声库 WAV、3D 模型、贴图、头像和整理后的 Blender 场景。
+These assets are not bundled. Obtain them from their authors under their terms.
+
+1. teio + manbo Japanese VCV voicebanks
+需要原始日语 VCV 库（B3/G4/C5），包含 WAV、oto.ini、character.txt 和原包说明。
+历史本地包 character.txt 的作者字段为 ywb。用户提供的声库来源页：
+https://www.bilibili.com/video/BV1E2J9zJE8c/
+下载入口以视频简介或作者说明为准。本次自动访问返回 HTTP 412，未核验具体附件和再分发条款。
+请保留原包说明，不要把其他声库冒充此版本。
+User-provided voicebank source: the Bilibili video above. Follow its description or
+author instructions for downloads. Automated access returned HTTP 412; attachments
+and redistribution terms were not verified. Preserve notices. Japanese VCV banks are not native
+Chinese singing models. A fresh clone cannot synthesize teio/manbo without them.
+
+2. Tokai Teio chibi model
+https://sketchfab.com/3d-models/tokai-teio-chibi-d5425ab1c37e40eda719ace2f16b112f
+历史记录：photon / Professor_E12；Model by Cygames。
+该地址本次未能核验可访问性或下载权限，请在原页面确认。
+Historical source; current access/download permission could not be verified.
+
+3. 曼波原模型（来源页面名称：赛马娘待兼诗歌剧）
+https://www.cgjoy.com/thread-280931-1-1.html
+发布者 XiaoGuanning，历史文件名 skin1.max。页面可访问不代表允许再分发。
+Source page is reachable; check account requirements, download terms and permissions.
+MAX 格式可能需要作者提供兼容导出或另行转换；不能直接当作 .blend 打开。
+A MAX file needs a compatible export/conversion before Blender use.
+
+4. duo_stage.blend is a locally prepared scene, not an upstream downloadable model.
+仅下载原始 GLB/MAX 不足以复现视频。需自行绑定、打包贴图、设置固定正面相机，
+并按 scripts/render_scene.py 的对象名和 UV 节点接口整理，或从合法个人备份恢复。
+Expected objects: teio dance rig, manbo dance rig, teio_Object_172, manbo_mouth.
+Mouth materials need Mouth tile offset nodes and the expected UV scale/stretch
+chain. See scripts/render_scene.py for the exact scene contract.
+There is no public download for this prepared scene; a fresh clone cannot render
+the full video without rebuilding/restoring it.
+
+取得素材后的目录 / Layout after obtaining assets:
+assets/
+  DOWNLOAD.txt
+  MANIFEST.json
+  private/                         # ignored, local only
+    voicebanks/
+      teio/
+        character.txt
+        <original subfolders>/     # retain original B3/G4/C5 layout
+          oto.ini
+          <recordings>.wav
+      manbo/
+        character.txt
+        <original subfolders>/
+          oto.ini
+          <recordings>.wav
+    metadata/
+      teio_oto.json
+      manbo_oto.json
+    characters/
+      duo_stage.blend               # prepared scene, packed textures
+      originals/
+        tokai_teio_chibi.glb
+        manbo_source/
+          skin1.max
+          <original textures>
+    avatars/
+      duo.png                       # optional cover editor input
+
+声库放好后运行 / Rebuild indices after restoring banks:
+python scripts/index_voicebanks.py
+python scripts/doctor.py
+
+神经模型和分轨权重见 models/DOWNLOAD.txt，软件见 tools/REQUIREMENTS.txt。
+无默认背景；预览为白底。不要下载旧项目背景。禁止 git add -f 私有素材。
+See THIRD_PARTY.md. This repository grants no redistribution rights to these assets.

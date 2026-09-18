@@ -1,0 +1,7 @@
+# Install CUDA-compatible torch + torchaudio first; keep separate from general CPU tools.
+demucs==4.0.1
+librosa>=0.9.1,<0.11
+einops>=0.6
+PyYAML>=6
+tqdm>=4.65
+# HifiSampler may require further dependencies from its own release.

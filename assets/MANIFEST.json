@@ -1,0 +1,10 @@
+{
+  "voicebanks": [
+    {"id":"teio","path":"assets/private/voicebanks/teio","type":"Japanese VCV B3/G4/C5","author_field":"ywb"},
+    {"id":"manbo","path":"assets/private/voicebanks/manbo","type":"Japanese VCV B3/G4/C5","author_field":"ywb"}
+  ],
+  "characters":{"scene":"assets/private/characters/duo_stage.blend","packed_textures":true,"background_included":false,"mode":"planar fixed-front"},
+  "vocoder":"models/pc_nsf_hifigan",
+  "demucs_cache":"models/torch/hub/checkpoints",
+  "git_policy":"Private assets/model weights excluded. Restore separately on a fresh clone."
+}

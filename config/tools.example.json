@@ -1,0 +1,8 @@
+{
+  "ffmpeg": "ffmpeg",
+  "ffprobe": "ffprobe",
+  "blender": "blender",
+  "musescore": "MuseScore4",
+  "hifisampler": "CHANGE_ME/path/to/hifisampler-code-root-containing-util",
+  "proxy": ""
+}

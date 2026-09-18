@@ -1,0 +1,19 @@
+{
+  "score_roundtrip_attacks": [
+    3,
+    2
+  ],
+  "synthesis": "PASS both Japanese VCV banks, PC-NSF-HiFiGAN",
+  "separation": "PASS Demucs six stems",
+  "video": "PASS 1080p30 4s, full decode, white background visually inspected",
+  "public_git_audit": "PASS",
+  "remote_transcription": "not exercised; needs task-specific consent",
+  "code_syntax": "PASS",
+  "scope": "Historical full-pipeline checks before private assets were removed; not a fresh-clone guarantee.",
+  "release_checks": {
+    "date": "2026-09-18",
+    "audit_regression_tests": 5,
+    "procedural_audio": "4 s stereo PCM16 44100 Hz; full FFmpeg decode passed",
+    "private_assets": "not distributed; restore separately"
+  }
+}

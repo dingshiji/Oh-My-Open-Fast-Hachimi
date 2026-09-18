@@ -1,0 +1,29 @@
+模型恢复 / Model downloads
+
+1. PC-NSF-HiFiGAN 44.1 kHz, hop 512, 128 bins, 2025.02
+https://github.com/openvpi/vocoders/releases/tag/pc-nsf-hifigan-44.1k-hop512-128bin-2025.02
+下载对应发布包，保留 model.ckpt、config.json 和 NOTICE。
+Download the matching release package and retain the model, config and notices.
+Expected layout (a package subdirectory is allowed; code searches recursively):
+models/
+  pc_nsf_hifigan/
+    pc_nsf_hifigan_44.1k_hop512_128bin_2025.02/
+      model.ckpt
+      config.json
+      NOTICE
+  torch/
+    hub/
+      checkpoints/
+        <Demucs downloaded weights>
+
+2. Demucs htdemucs_6s
+https://github.com/facebookresearch/demucs
+安装 Demucs 后首次运行 audio.py separate 会按上游机制下载对应权重。
+The first separation run downloads weights via Demucs; network access is required.
+本项目将 torch hub 缓存设在 models/torch/hub。不要重命名下载的权重文件。
+Do not rename checkpoint files. Do not add weights/caches to Git.
+
+3. HifiSampler code is a separate dependency:
+https://github.com/openhachimi/hifisampler
+See tools/REQUIREMENTS.txt; configure the directory containing util/ in config/local.json.
+Singing currently requires CUDA. Weights alone do not supply voicebanks.
